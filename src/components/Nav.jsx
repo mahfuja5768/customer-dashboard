@@ -1,10 +1,9 @@
-import "bootstrap/js/dist/dropdown"
+import "bootstrap/js/dist/dropdown";
+import "bootstrap/js/dist/collapse";
 
-const Nav = ({toggleAction}) => {
+const Nav = ({ toggleAction, toggle }) => {
   return (
-    <nav onClick={toggleAction} className="navbar navbar-expand-sm navbar-dark bg-transparent">
-      <i className="navbar-brand bi bi-justify-left fs-4" href="#">
-      </i>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-transparent">
       <button
         className="navbar-toggler d-lg-none cursor-pointer"
         type="button"
@@ -13,12 +12,18 @@ const Nav = ({toggleAction}) => {
         aria-controls="collapsibleNavId"
         aria-expanded="false"
         aria-label="Toggle navigation"
-      ></button>
-      <div className="collapse navbar-collapse" id="collapsibleNavId">
-        <ul className="navbar-nav ms-auto mt-2 mt-lg-0 pe-12">
-          <li className="nav-item dropdown">
+      >
+        <i className="bi bi-justify"></i>
+      </button>
+
+      <div
+        className="position-absolute pt-4 start-0  collapse navbar-collapse"
+        id="collapsibleNavId"
+      >
+        <ul className="navbar-nav ms-auto mt-2 mt-lg-0 ">
+          <li className="nav-item dropdown ">
             <a
-              className="nav-link dropdown-toggle"
+              className="nav-link text-black dropdown-toggle"
               href="#"
               id="dropdownId"
               data-bs-toggle="dropdown"
@@ -40,6 +45,20 @@ const Nav = ({toggleAction}) => {
             </div>
           </li>
         </ul>
+      </div>
+      <div className="position-absolute pt-4 end-0 ">
+        {toggle ? (
+          <i
+            onClick={toggleAction}
+            className="cursor-pointer bi d-lg-none bi-x-lg text-black"
+          ></i>
+        ) : (
+          <i
+            onClick={toggleAction}
+            className="cursor-pointer navbar-brand bi bi-justify-left text-black fs-4"
+            href="#"
+          ></i>
+        )}
       </div>
     </nav>
   );
